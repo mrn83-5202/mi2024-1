@@ -1,0 +1,8 @@
+.venv
+.zip
+*pycache*
+
+*.pyc
+final_ass*
+final_ass*
+.env

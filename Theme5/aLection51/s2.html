@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Візуалізація даних ІАЗ ОУВ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f2f2f2;
+    }
+    #chartContainer {
+      width: 80%;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>Кількість виявлених об'єктів на ділянках місцевості</h2>
+  <div id="chartContainer">
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <!-- Підключення Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    // Дані для графіку (назви ділянок і кількість об'єктів)
+    const labels = ['Ділянка A', 'Ділянка B', 'Ділянка C', 'Ділянка D', 'Ділянка E'];
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Кількість об’єктів',
+        data: [12, 19, 2, 15, 9],
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    };
+
+    // Конфігурація графіку
+    const config = {
+      type: 'bar',
+      data: data,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Кількість'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top'
+          },
+          title: {
+            display: true,
+            text: 'Статистика виявлення об’єктів'
+          }
+        }
+      }
+    };
+
+    // Створення графіку
+    const myChart = new Chart(ctx, config);
+  </script>
+</body>
+</html>

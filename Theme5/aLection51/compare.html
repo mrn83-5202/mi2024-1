@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Порівняння графічного дизайну</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    .chart-container {
+      width: 80%;
+      margin: 0 auto;
+    }
+    .btn-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .toggle-btn {
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .toggle-btn:hover {
+      background-color: #45a049;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>Порівняння варіантів графічного дизайну</h2>
+  <div class="btn-container">
+    <button class="toggle-btn" onclick="showChart('chart1')">Варіант 1</button>
+    <button class="toggle-btn" onclick="showChart('chart2')">Варіант 2</button>
+  </div>
+  <div class="chart-container">
+    <canvas id="chart1"></canvas>
+    <canvas id="chart2" class="hidden"></canvas>
+  </div>
+  
+  <!-- Підключення Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Дані для обох варіантів
+    const labels = ['Ділянка A', 'Ділянка B', 'Ділянка C', 'Ділянка D'];
+    const data1 = [10, 15, 8, 12];
+    const data2 = [12, 18, 5, 14];
+
+    // Налаштування для Варіанту 1 (стандартний дизайн)
+    const ctx1 = document.getElementById('chart1').getContext('2d');
+    const chart1 = new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Кількість об’єктів',
+          data: data1,
+          backgroundColor: 'rgba(75, 192, 192, 0.6)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Стандартний дизайн'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Налаштування для Варіанту 2 (модернізований дизайн)
+    const ctx2 = document.getElementById('chart2').getContext('2d');
+    const chart2 = new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Кількість об’єктів',
+          data: data2,
+          fill: false,
+          borderColor: 'rgba(255, 99, 132, 1)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Модернізований дизайн'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Функція перемикання графіків
+    function showChart(chartId) {
+      document.getElementById('chart1').classList.add('hidden');
+      document.getElementById('chart2').classList.add('hidden');
+      document.getElementById(chartId).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
