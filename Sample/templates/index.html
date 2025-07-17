@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аналітичний дашборд</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Аналітичний дашборд оперативних даних</h1>
+        
+        <div class="dashboard-grid">
+            <div class="chart-container">
+                <img src="{{ plot1_url }}" alt="Кількість подій по зонах">
+            </div>
+            <div class="chart-container">
+                <img src="{{ plot2_url }}" alt="Розподіл подій за категоріями">
+            </div>
+            <div class="chart-container full-width">
+                <img src="{{ plot3_url }}" alt="Середня кількість залучених підрозділів">
+            </div>
+        </div>
+
+        <div class="conclusions">
+            <h2>Висновки</h2>
+            <p>{{ conclusions }}</p>
+        </div>
+    </div>
+</body>
+</html>
