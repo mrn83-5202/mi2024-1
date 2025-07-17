@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Розподіл екзаменаційних білетів</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Розподіл екзаменаційних білетів</h1>
+        <label for="seed">Введіть seed:</label>
+        <input type="text" id="seed" placeholder="Наприклад, 12345">
+
+        <label for="num_students">Кількість слухачів:</label>
+        <input type="number" id="num_students" min="1" placeholder="Наприклад, 5">
+
+        <label for="num_tickets">Кількість білетів:</label>
+        <input type="number" id="num_tickets" min="1" placeholder="Наприклад, 10">
+
+        <button onclick="generateDistribution()">Генерувати розподіл</button>
+        <button onclick="saveToJSON()">Зберегти у JSON</button>
+
+        <table id="distributionTable">
+            <thead>
+                <tr>
+                    <th>Слухач</th>
+                    <th>Номер білета</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
